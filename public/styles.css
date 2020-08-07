@@ -1,0 +1,292 @@
+/* ############ Reset ############## */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  color: #000;
+  font-family: "Roboto", sans-serif;
+  overflow: hidden;
+}
+
+button:target,
+button:focus {
+  outline: none;
+}
+
+/* ############ Utility ############## */
+.butn {
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 0.8rem 2rem;
+  width: 17vw;
+  background: #808e9b;
+}
+
+.butn:hover {
+  background: #d2dae2;
+}
+
+.hidden {
+  display: none;
+}
+/* ############ Maing a grid ############## */
+main {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(100, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+
+/* ############ Styling log############## */
+
+.logo {
+  grid-column: 1 / span 99;
+  grid-row: 1 / span 3;
+  background: #1e272e;
+}
+
+.logo > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 100%;
+}
+
+.logo img {
+  width: 500px;
+}
+
+/* ############ Styling interactivity ############## */
+
+.new-quote {
+  position: absolute;
+  bottom: 38vh;
+  left: 0;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 7vh;
+  z-index: 1;
+}
+
+.new-quote a {
+  color: #fff;
+  padding: 1.5vh;
+  height: 100%;
+  text-align: center;
+  width: 45vw;
+  background: #8360c3;
+  background: -webkit-linear-gradient(to right, #2ebf91, #8360c3);
+  background: linear-gradient(to right, #2ebf91, #8360c3);
+  font-size: 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.interact {
+  background: #485460;
+  position: relative;
+  grid-column: 1 / span 99;
+  grid-row: 4 / span 5;
+}
+
+.quote-options {
+  width: 98%;
+  height: 100%;
+}
+
+.request-buttons {
+  display: flex;
+  margin: 10vh auto;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  height: 20vh;
+  width: 60%;
+}
+
+.request-buttons .form-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2vh;
+}
+
+.request-buttons .form-group input {
+  width: 90%;
+}
+
+.form-group input:focus {
+  box-shadow: 0 0 0pt 1pt #0be881 !important;
+}
+
+.request-buttons .form-group button {
+  width: 10%;
+}
+
+.request-buttons .form-group button {
+  border: none;
+  background: none;
+}
+
+.request-buttons .form-group button i {
+  color: #1e272e;
+}
+
+.request-buttons .form-group button i:hover {
+  color: #8360c3;
+}
+
+.request-buttons div:last-child {
+  /* width: 60%; */
+  margin-right: 90px;
+}
+
+.request-buttons div:last-child button {
+  margin: 0.5vh 2vw;
+}
+
+/* ############ Styling all the income results ############## */
+.results {
+  display: flex;
+  justify-content: center;
+  grid-area: results;
+  background: #d2dae2;
+  position: relative;
+  grid-column: 100;
+  grid-row: 1 / span 5;
+  transition: all 0.5s ease-in-out;
+  /* transform: translateX(-325px); */
+  /* width: 325px; */
+}
+
+.results .aside-container {
+  position: absolute;
+  top: 0;
+  left: -50px;
+  /* padding: 10px; */
+  width: 50px;
+  background: #d2dae2;
+  /* transform: translateX(-100px); */
+  border-radius: 50% 0 0 50%;
+  height: 100vh;
+  box-shadow: -12.5px 0 1px 0px #8360c3;
+  box-shadow: -7.5px 0 0px 0px rgb(32, 32, 32);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 3px dotted #1e272e;
+}
+
+.results .aside-container i {
+  color: #1e272e;
+}
+
+.results .aside-container i:hover {
+  color: #8360c3;
+}
+
+.results .quote-container {
+  height: 100vh;
+  max-width: 30vw;
+  z-index: 3;
+}
+
+.results .close-butn {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+}
+
+.results .close-butn i {
+  color: #485460;
+}
+
+.results .close-butn i:hover {
+  color: #1e272e;
+}
+.results .quote-container {
+  overflow-x: scroll;
+}
+/* Quotes */
+.card {
+  margin: 2vh 0;
+}
+
+/* New Quote */
+.new-qoute-interface {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(30, 39, 46, 0.5);
+  z-index: 3;
+  color: #fff;
+  opacity: 0;
+  display: none;
+  transition: opacity 10s linear;
+}
+.new-qoute-interface > div {
+  position: absolute;
+  top: 10vh;
+  left: 10vw;
+  background: rgba(87, 95, 207, 0.3);
+  border-radius: 20px;
+  width: 80vw;
+  height: 80vh;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  display: none;
+}
+
+.new-qoute-interface > div i:hover {
+  color: #ff3f34;
+}
+
+.new-qoute-interface.show,
+.new-qoute-interface > div.show {
+  animation: show 1s ease-in forwards;
+}
+
+.new-qoute-interface.rm,
+.new-qoute-interface > div.rm {
+  animation: remove 1s ease-in forwards;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes remove {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.new-qoute-interface > div i {
+  position: absolute;
+  top: 5vh;
+  right: 5vw;
+}
