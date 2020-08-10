@@ -7,9 +7,10 @@ const apiRouter = express.Router();
 
 // Get all quotes
 apiRouter.get("/quotes", (req, res, next) => {
-  if (req.query.person) {
-    const person = req.query.person;
-    const foundQuotes = getQuotes(quotes, person);
+  if (req.query.data) {
+    const data = req.query.data;
+    const type = req.query.type;
+    const foundQuotes = getQuotes(quotes, data, type);
     if (foundQuotes) {
       const result = { quotes: foundQuotes };
       res.send(result);
@@ -39,7 +40,7 @@ apiRouter.post("/quotes", (req, res, next) => {
 // Get a random quote
 apiRouter.get("/quotes/random", (req, res, next) => {
   const randomQuote = getRandomElement(quotes);
-  const result = { quote: randomQuote };
+  const result = { quotes: [randomQuote] };
   res.send(result);
 });
 

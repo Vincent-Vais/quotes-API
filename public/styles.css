@@ -110,18 +110,28 @@ main {
   align-items: center;
   flex-direction: column;
   height: 20vh;
-  width: 60%;
+  width: 80%;
 }
 
 .request-buttons .form-group {
-  width: 100%;
+  width: 70%;
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 2vh;
+  margin-right: 60px;
 }
 
-.request-buttons .form-group input {
-  width: 90%;
+.request-buttons .form-group > div:last-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 100%;
+}
+
+.request-buttons .form-group div input {
+  width: 80%;
 }
 
 .form-group input:focus {
@@ -145,19 +155,51 @@ main {
   color: #8360c3;
 }
 
-.request-buttons div:last-child {
-  /* width: 60%; */
-  margin-right: 90px;
+.request-buttons .toggler .switch {
+  position: relative;
+  display: inline-block;
+  top: 10px;
+  left: 0;
+  width: 60px;
+  height: 30px;
+  background-color: #eee;
+  border-radius: 20px;
 }
 
-.request-buttons div:last-child button {
-  margin: 0.5vh 2vw;
+.request-buttons .toggler .switch:after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: white;
+  top: 4px;
+  left: 4px;
+  transition: all 0.2s;
+  background: #8360c3;
 }
+
+.request-buttons .toggler .checkbox:checked + .switch {
+  background-color: #8360c3;
+}
+
+.request-buttons .toggler .checkbox:checked + .switch:after {
+  left: 30px;
+  background: #fff;
+}
+
+.request-buttons .toggler .checkbox {
+  display: none;
+}
+
+/* .request-buttons div:nth-child(2) {
+  margin-right: 120px;
+} */
 
 /* ############ Styling all the income results ############## */
 .results {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   grid-area: results;
   background: #d2dae2;
   position: relative;
@@ -197,7 +239,8 @@ main {
 
 .results .quote-container {
   height: 100vh;
-  max-width: 30vw;
+  /* max-width: 30vw; */
+  /* margin: 1vw 0 1vw 0; */
   z-index: 3;
 }
 
@@ -205,6 +248,7 @@ main {
   position: absolute;
   top: 20px;
   right: 40px;
+  z-index: 4;
 }
 
 .results .close-butn i {
@@ -217,9 +261,28 @@ main {
 .results .quote-container {
   overflow-x: scroll;
 }
+
 /* Quotes */
+
 .card {
+  width: 50vw;
   margin: 2vh 0;
+}
+
+.quote-container .error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.quote-container .error .card > div:first-child {
+  font-size: 2rem;
+  font-weight: 300;
+}
+.quote-container .error .card > div:last-child {
+  font-size: 1.25rem;
 }
 
 /* New Quote */
@@ -289,4 +352,104 @@ main {
   position: absolute;
   top: 5vh;
   right: 5vw;
+}
+
+@media (max-width: 800px) {
+  .logo {
+    grid-column: 1 / span 99;
+    grid-row: 1;
+  }
+  .results {
+    grid-column: 100;
+    grid-row: 1 / span 5;
+  }
+  .interact {
+    grid-column: 1 / span 99;
+    grid-row: 2 / span 4;
+  }
+  .request-buttons,
+  .request-buttons > * {
+    display: flex;
+    margin: 10vh auto;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 80%;
+  }
+  .request-buttons .form-group {
+    width: 100%;
+  }
+  .request-buttons .form-group div:last-child {
+    margin-top: 2vh;
+    height: auto;
+  }
+  .request-buttons > div:last-child button {
+    width: 100%;
+    margin: 2vh 0;
+  }
+  .request-buttons > div:last-child button:nth-of-type(2) {
+    margin-bottom: 12.5vh;
+  }
+  .new-quote {
+    top: 25vh;
+    left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 70vw;
+    margin: 2vh 0;
+  }
+  .results {
+    z-index: 5;
+  }
+  .new-quote {
+    top: 32.5vh;
+    left: 0;
+  }
+  .new-quote a {
+    width: 75vw;
+  }
+  .request-buttons {
+    margin: 10vh auto 10vh 0;
+    width: 90vw;
+  }
+  .logo img.vertical-phone-img {
+    width: 150px;
+  }
+}
+
+@media (max-height: 400px) {
+  .request-buttons > div:last-child button {
+    width: 100%;
+    margin: 2vh 0;
+    height: 10vh;
+  }
+  .logo {
+    grid-column: 1 / span 99;
+    grid-row: 1;
+  }
+  .results {
+    grid-column: 100;
+    grid-row: 1 / span 5;
+  }
+  .interact {
+    grid-column: 1 / span 99;
+    grid-row: 2 / span 5;
+    padding-top: 5vh;
+    margin-top: 0;
+  }
+  .new-quote {
+    top: 80vh;
+    left: 2.5vw;
+    height: 12.5vh;
+  }
+  .logo img.vertical-phone-img {
+    width: 70px;
+  }
+  .results {
+    z-index: 2;
+  }
 }

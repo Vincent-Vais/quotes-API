@@ -3,6 +3,7 @@
 <html lang="en">
   <head>
     <title>Quote API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -43,7 +44,7 @@
           </div>
         </div>
       </div>
-      <div class="logo">
+      <div class="logo moving">
         <div>
           <img src="./logo_transparent_background.png" alt="logo" />
         </div>
@@ -51,33 +52,39 @@
       <div class="new-quote">
         <a href="add-quote.html">New Quote</a>
       </div>
-      <div class="interact">
+      <div class="interact moving">
         <div class="quote-options">
           <div class="request-buttons">
             <div class="form-group">
-              <input
+              <div class="toggler">
+                <input type="checkbox" id="toggle" class="checkbox" />
+                <label for="toggle" class="switch"></label>
+              </div>
+              <div>
+                <input
                 id="author"
                 value=""
                 class="form-control"
                 placeholder="Fetch by Author"
               />
-              <button id="fetch-by-author">
+              <button id="fetch-by-author" data-api="/api/quotes" data-type="author">
                 <i class="fas fa-arrow-circle-right fa-3x"></i>
               </button>
+              </div>
             </div>
             <div>
-              <button id="fetch-random" class="butn butn-primary">
+              <button id="fetch-random" class="butn butn-primary" data-api="/api/quotes/random">
                 Fetch a Random Quote
               </button>
-              <button id="fetch-quotes" class="butn butn-secondary">
-                Fetch all Quotes
+              <button id="fetch-quotes" class="butn butn-secondary" data-api = "/api/quotes">
+                Fetch All Quotes
               </button>
             </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="results">
+      <div class="results moving">
         <div class="aside-container">
           <i class="fas fa-chevron-left fa-4x"></i>
         </div>
@@ -103,6 +110,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="bezier.js"></script>
-    <script src="script.js"></script>
+    <script src="newScript.js"></script>
   </body>
 </html>

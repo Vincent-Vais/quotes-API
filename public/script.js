@@ -28,6 +28,7 @@ const easing = BezierEasing(0, 0, 0.1, 0.92);
 const state = {
   span: 100,
   start: true,
+  curWidthPctg: "90%",
 };
 const resetQuotes = () => {
   quoteContainer.innerHTML = "";
@@ -44,8 +45,6 @@ const renderQuotes = (quotes = []) => {
   if (quotes.length > 0) {
     quotes.forEach((quote) => {
       const newQuote = document.createElement("div");
-      // newQuote.className = "single-quote";
-      // newQuote.innerHTML = `<div class="quote-text">${quote.quote}</div>
       newQuote.innerHTML = `
       <div class="card">
         <div class="card-header"></div>
@@ -80,14 +79,17 @@ const makeSpace = (quotes) => {
   let p;
   let currentSpan;
   let size = state.span;
-  let curPos = newQuoteBtnPositionLeft;
+  // let curPos = newQuoteBtnPositionLeft;
+  let curWidth = parseInt(state.curWidthPctg.trim("%"));
+  let dif = curWidth - (50 + 100 / window.innerWidth);
   const stop = window.setInterval(
     () => {
       p = (Date.now() - start) / 500;
       currentSpan = size - 50 * easing(p);
       if (currentSpan > 50) {
-        newQuoteBtn.style.left = `${curPos - p * 200}px`;
-        curPos--;
+        // newQuoteBtn.style.left = `${curPos - p * 200}px`;
+        newQuoteBtn.style.width = `${curWidth - dif * p * 1.125}%`;
+        // curPos--;
         logoContainer.style.gridColumn = `1 / span ${
           parseInt(currentSpan) - 1
         }`;
@@ -100,7 +102,8 @@ const makeSpace = (quotes) => {
       } else {
         clearInterval(stop);
         state.span = currentSpan;
-        newQuoteBtnPositionLeft = curPos;
+        // newQuoteBtnPositionLeft = curPos;
+        state.curWidthPctg = newQuoteBtn.style.width;
         renderQuotes(quotes);
         if (state.start) {
           state.start = false;
@@ -118,15 +121,15 @@ const reduceSpace = (quotes) => {
   let p;
   let currentSpan;
   let size = state.span;
-  let curPos = newQuoteBtnPositionLeft;
+  let curWidth = parseInt(state.curWidthPctg.trim("%"));
+  let dif = 90 - curWidth;
   resetQuotes();
   const stop = window.setInterval(
     () => {
       p = (Date.now() - start) / 500;
       currentSpan = size + 50 * easing(p);
       if (currentSpan < 100) {
-        newQuoteBtn.style.left = `${curPos + p * 235}px`;
-        curPos--;
+        newQuoteBtn.style.width = `${curWidth + dif * p}%`;
         logoContainer.style.gridColumn = `1 / span ${
           parseInt(currentSpan) - 1
         }`;
@@ -137,6 +140,8 @@ const reduceSpace = (quotes) => {
           101 - parseInt(currentSpan)
         }`;
       } else {
+        newQuoteBtn.style.width = "90%";
+        state.curWidthPctg = newQuoteBtn.style.width;
         clearInterval(stop);
         state.span = currentSpan;
         newQuoteBtnPositionLeft = 0;
